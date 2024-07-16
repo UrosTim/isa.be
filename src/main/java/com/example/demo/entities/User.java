@@ -16,4 +16,6 @@ public class User {
     private String lastName;
     @Column(name = "email")
     private String email;
+    @Column(name = "contact_number")
+    private String contactNumber;
 }
