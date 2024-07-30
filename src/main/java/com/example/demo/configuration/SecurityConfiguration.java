@@ -1,6 +1,5 @@
 package com.example.demo.configuration;
 
-import com.example.demo.constants.RoleConstants;
 import com.example.demo.filters.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
