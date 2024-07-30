@@ -38,18 +38,18 @@ public class UserController {
 
     @PostMapping("create")
     public ResponseEntity<?> create(@RequestBody @Valid UserModel userModel, BindingResult result) {
-        if (result.hasErrors()) {
-            return new ResponseEntity<>("Registration failed.", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        return new ResponseEntity<>(userService.create(userModel), HttpStatus.CREATED);
+        return ResponseEntity.ok(userService.create(userModel));
     }
-    @PostMapping("update")
+    @PutMapping("update")
     public ResponseEntity<?> update(@RequestBody @Valid UserModel userModel, BindingResult result) {
         if (result.hasErrors()) {
-            return new ResponseEntity<>("Registration failed.", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Not updated.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-        return new ResponseEntity<>(userService.update(userModel), HttpStatus.CREATED);
+        return ResponseEntity.ok(userService.update(userModel));
+    }
+    @DeleteMapping("delete")
+    public ResponseEntity<?> delete(Integer userId) {
+        userService.delete(userId);
+        return ResponseEntity.ok("");
     }
 }
