@@ -20,4 +20,7 @@ public class UserModel {
 
     @ContactNumberConstraint
     private String contactNumber;
+
+    @NotBlank
+    private String password;
 }
