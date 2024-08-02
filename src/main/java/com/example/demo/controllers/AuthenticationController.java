@@ -5,6 +5,8 @@ import com.example.demo.models.LoginUserModel;
 import com.example.demo.models.RegisterUserModel;
 import com.example.demo.models.UserModel;
 import com.example.demo.services.AuthenticationService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,5 +28,10 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<LoginResponseModel> authenticate(@RequestBody LoginUserModel model) {
         return ResponseEntity.ok(authenticationService.authenticate(model));
+    }
+
+    @PostMapping("/refresh-token")
+    public ResponseEntity<?> refreshToken(HttpServletRequest request, HttpServletResponse response) {
+        return ResponseEntity.ok(authenticationService.refreshToken(request, response));
     }
 }
